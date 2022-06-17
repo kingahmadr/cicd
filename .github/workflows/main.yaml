@@ -5,13 +5,13 @@
 
 name: Publish Docker image PHP-FPM Custom
 
-on:
-  release:
-    types: [published]
-
 #on:
-#  push:
-#    branches: ['main']
+#  release:
+#    types: [published]
+
+on:
+  push:
+    branches: ['main']
 
 jobs:
   push_to_registry:
@@ -37,8 +37,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: .
-          file: ./fpm-alpine-build
+          context: ./fpm-alpine-build/
+#          file: ./fpm-alpine-build
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
