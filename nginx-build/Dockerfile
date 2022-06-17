@@ -5,3 +5,4 @@ FROM nginx:latest
 
 #COPY ./phpinfo.php /var/www/html/
 COPY ./sites.conf /etc/nginx/conf.d/
+RUN rm -rf /etc/nginx/conf.d/default.conf
