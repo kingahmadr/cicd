@@ -4,4 +4,4 @@ FROM nginx:latest
 #RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 #COPY ./phpinfo.php /var/www/html/
-COPY ../sites.conf /etc/nginx/conf.d/
+COPY ./sites.conf /etc/nginx/conf.d/
