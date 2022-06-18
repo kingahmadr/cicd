@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 ADD codeigniter4-advanced-app /var/www/html/
-COPY index.php /var/www/html
+COPY ./index.php /var/www/html
 #WORKDIR /var/www/html/
 #RUN cd /var/www/html
 #CMD ["php","/var/www/html/spark","migrate -all"]
