@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 COPY ./codeigniter4-advanced-app/* /var/www/html/
-WORKDIR /var/www/html/
-
-CMD ["php","spark","migrate -all"]
+#WORKDIR /var/www/html/
+RUN cd /var/www/html
+CMD ["php","/var/www/html/spark","migrate -all"]
