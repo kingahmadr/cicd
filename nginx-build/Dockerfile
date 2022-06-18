@@ -4,5 +4,9 @@ FROM nginx:latest
 #RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 #COPY ./phpinfo.php /var/www/html/
+RUN apt-get update \
+    && apt-get install inetutils-ping \
+    && apt-get install mariadb-client
+	
 COPY ./sites.conf /etc/nginx/conf.d/
 RUN rm -rf /etc/nginx/conf.d/default.conf
