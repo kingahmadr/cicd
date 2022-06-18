@@ -1,0 +1,64 @@
+.alert
+{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.alert-error
+{
+    background-color: Red;
+    color: white;
+}
+
+.alert-success
+{
+    background-color: LimeGreen;
+    color: white;
+}
+
+.alert-info
+{
+    background-color: LightBlue;
+    color: white;
+}
+
+.form-group
+{
+    margin-bottom: 20px;
+}
+
+.form-group label
+{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea
+{
+    padding: 8px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.form-group input[type=checkbox]
+{
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.form-group input[type=submit]
+{
+    width: auto;
+}
+
+.invalid-feedback
+{
+    color: Red;
+}

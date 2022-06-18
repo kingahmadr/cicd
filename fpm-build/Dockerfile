@@ -8,3 +8,8 @@ RUN apt-get update && apt-get install -y \
 
 #  Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+COPY ./codeigniter4-advanced-app/* /var/www/html/
+WORKDIR /var/www/html/
+
+CMD ["php","spark","migrate -all"]

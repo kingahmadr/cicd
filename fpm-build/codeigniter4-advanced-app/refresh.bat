@@ -1,0 +1,1 @@
+php spark migrate:refresh && php spark db:seed DatabaseSeeder
