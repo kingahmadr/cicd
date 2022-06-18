@@ -4,8 +4,11 @@ RUN apt-get update && apt-get install -y \
 		libjpeg62-turbo-dev \
 		libpng-dev \
 		vim \
+		libicu-dev\
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
-	&& docker-php-ext-install -j$(nproc) gd intl
+	&& docker-php-ext-install -j$(nproc) gd \
+	&& docker-php-ext-configure intl \
+	&& docker-php-ext-install intl
 
 #  Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
