@@ -34,7 +34,7 @@ spec:
   - name: nginx-test-http
     protocol: TCP
     port: 80
-#    targetPort: http-web-svc
+    targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
