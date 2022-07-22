@@ -28,7 +28,6 @@ metadata:
   namespace: mamad-namepsace
 spec:
   selector:
-    matchLables:
       app: nginx-test
   ports:
   - name: nginx-test-http
