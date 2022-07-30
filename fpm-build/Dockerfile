@@ -14,6 +14,6 @@ RUN apt-get update && apt-get install -y \
 
 #  Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-    mkdir /apps
+    && mkdir /apps
 COPY ./index.php apps/
 	 
