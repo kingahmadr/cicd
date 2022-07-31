@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels: 
-    workl oad.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
+    workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
   name: db-statefulsets-wordpress
   namespace: mamad-namespace
 spec:
