@@ -24,10 +24,10 @@ spec:
       containers:
       - image: index.docker.io/sultanahmad/nginx:v2
         imagePullPolicy: Always
-        name: nginx-wordpress-container 
+        name: nginx-wp-ctr 
         ports:
         - containerPort: 80
-          name: nginx-http-wordpress
+          name: nginx-http-wp
           protocol: TCP
         volumeMounts:
         - mountPath: /var/www/html/
