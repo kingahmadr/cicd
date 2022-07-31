@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-svc-test
+  name: db-svc-wp
   namespace: mamad-namespace
 spec:
   clusterIP: None
@@ -14,7 +14,7 @@ spec:
   - IPv6
   ipFamilyPolicy: RequireDualStack
   ports:
-  - name: db-port-test
+  - name: db-port-wordpress
     port: 3306
     protocol: TCP
     targetPort: 3306
@@ -30,7 +30,7 @@ metadata:
   namespace: mamad-namespace
 spec:
   ports:
-  - name: db-svc-port
+  - name: db-wp-port
     port: 3306
     protocol: TCP
     targetPort: 3306

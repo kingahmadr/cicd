@@ -52,7 +52,7 @@ spec:
               optional: false
         image: index.docker.io/sultanahmad/fpm:v2
         imagePullPolicy: Always
-        name: container-0
+        name: fpm-wordpress-container 
         ports:
         - containerPort: 9000
           name: fpm-wp-port
