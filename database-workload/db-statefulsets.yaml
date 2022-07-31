@@ -3,53 +3,6 @@ kind: StatefulSet
 metadata:
   labels: 
     workl oad.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
-# managedF ields:
-# - apiVer sion: apps/v1
-#   fields Type: FieldsV1
-#   fields V1:
-#     f:sp ec:
-#       f: template:
-#          f:spec:
-#            f:containers:
-#              k:{"name":"mariadb"}:
-#                .: {}
-#                f:env:
-#                  .: {}
-#                  k:{"name":"MARIADB_PASSWORD"}:
-#                    .: {}
-#                    f:name: {}
-#                    f:valueFrom:
-#                      .: {}
-#                      f:secretKeyRef: {}
-#                  k:{"name":"MARIADB_ROOT_PASSWORD"}:
-#                    .: {}
-#                    f:name: {}
-#                    f:valueFrom:
-#                      .: {}
-#                      f:secretKeyRef: {}
-#                  k:{"name":"MARIADB_USER"}:
-#                    .: {}
-#                    f:name: {}
-#                    f:valueFrom:
-#                      .: {}
-#                      f:secretKeyRef: {}
-#                f:ports:
-#                  .: {}
-#                  k:{"containerPort":3306,"protocol":"TCP"}:
-#                    .: {}
-#                f:volumeMounts:
-#                  .: {}
-#                  k:{"mountPath":"/var/lib/mysql"}:
-#                    .: {}
-#            f:volumes:
-#              .: {}
-#              k:{"name":"vol-mariadb-wordpress"}:
-#                .: {}
-#                f:hostPath:
-#                  .: {}
-#                  f:path: {}
-#                 f:type: {}
-#               f:name: {}
   name: db-statefulsets-wordpress
   namespace: mamad-namespace
 spec:
