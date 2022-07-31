@@ -51,17 +51,30 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /var/lib/mysql
-          name: vol-mariadb-wordpress
+          name: vct-db-wp
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-      volumes:
-      - hostPath:
-          path: /mnt/mamad-volume-db-wordpress
-          type: DirectoryOrCreate
-        name: vol-mariadb-wordpress
+      volumeClaimTemlpates:
+        - type: persistentvolumeclaim
+          metadata: 
+            namespace: mamad-namespace
+            name: vct-db-wp
+          spec:
+            accessModes:
+             - ReadWriteMany
+            storageClassName: nfs-client
+            volumeName: ''
+            resources:
+              request:
+                storage: 2Gi                  
+#      volumes:
+#      - hostPath:
+#          path: /mnt/mamad-volume-db-wordpress
+#          type: DirectoryOrCreate
+#        name: vol-mariadb-wordpress
   updateStrategy:
     rollingUpdate:
       partition: 0
