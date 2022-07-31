@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
+  name: db-statefulsets-wordpress
+  namespace: mamad-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
+  serviceName: db-svc-test
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
+    spec:
+      containers:
+      - env:
+        - name: MARIADB_USER
+          valueFrom:
+            secretKeyRef:
+              key: MARIADB_USER
+              name: db-env
+              optional: false
+        - name: MARIADB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MARIADB_PASSWORD
+              name: db-env
+              optional: false
+        - name: MARIADB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: MARIADB_ROOT_PASSWORD
+              name: db-env
+              optional: false
+        image: index.docker.io/sultanahmad/mariadb:v2
+        imagePullPolicy: Always
+        name: mariadb
+        ports:
+        - containerPort: 3306
+          name: db-svc-port-test
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: vol-mariadb
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /mnt/mamad-volume-db-wordpress
+          type: DirectoryOrCreate
+        name: vol-mariadb
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate

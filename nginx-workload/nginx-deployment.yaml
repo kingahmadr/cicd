@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-wordpress
+  namespace: mamad-namespace
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: apps.deployment-mamad-namespace-nginx-wordpress
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: apps.deployment-mamad-namespace-nginx-wordpress
+    spec:
+      affinity: {}
+      containers:
+      - image: index.docker.io/sultanahmad/nginx:v2
+        imagePullPolicy: Always
+        name: nginx-wordpress-container 
+        ports:
+        - containerPort: 80
+          name: nginx-http-wordpress
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/www/html/
+          name: vol-nginx-wordpress
+        - mountPath: /etc/nginx/conf.d/
+          name: vol-nginx-configmap-wordpress
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - persistentVolumeClaim:
+          claimName: wordpress-pvc
+        name: vol-nginx-wordpress
+      - configMap:
+          defaultMode: 420
+          name: nginx-custom-conf-wordpress
+          optional: false
+        name: vol-nginx-configmap-wordpress
+#      - configMap:
+#          defaultMode: 420
+#          name: nginx-php
+#          optional: false
+#        name: vol-nginx-php

@@ -1,0 +1,40 @@
+## Headless Service Required for statefulsets workload on Rancher
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-svc-test
+  namespace: mamad-namespace
+spec:
+  clusterIP: None
+  clusterIPs:
+  - None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  - IPv6
+  ipFamilyPolicy: RequireDualStack
+  ports:
+  - name: db-port-test
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["mamad-namespace/db-statefulsets-wordpress"]'
+  name: db-statefulsets-wordpress
+  namespace: mamad-namespace
+spec:
+  ports:
+  - name: db-svc-port
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
+  sessionAffinity: None
+  type: ClusterIP
