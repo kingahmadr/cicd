@@ -6,6 +6,7 @@ metadata:
   name: fpm-wordpress-svc
   namespace: mamad-namespace
 spec:
+  ports:
   - name: fpm-wp-port
     port: 9000
     protocol: TCP

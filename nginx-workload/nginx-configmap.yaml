@@ -4,7 +4,7 @@ data:
     server {
           listen 80;
 
-          server_name nginx.ahmadcloud.my.id www.nginx.ahmadcloud.my.id;
+          server_name wordpress.ahmadcloud.my.id www.wordpress.ahmadcloud.my.id;
           index index.php index.html;
           error_log  /var/log/nginx/error.log;
           access_log /var/log/nginx/access.log;
@@ -17,7 +17,7 @@ data:
           location ~ \.php$ {
               try_files $uri =404;
               fastcgi_split_path_info ^(.+\.php)(/.+)$;
-              fastcgi_pass fpm-svc:9000;
+              fastcgi_pass fpm-wordpress-svc:9000;
               fastcgi_index index.php;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
