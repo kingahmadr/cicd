@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       workload.user.cattle.io/workloadselector: apps.statefulset-mamad-namespace-db-statefulsets-wordpress
-  serviceName: db-svc-test
+  serviceName: db-svc-wp
   template:
     metadata:
       labels:
