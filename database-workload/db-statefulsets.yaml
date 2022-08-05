@@ -57,7 +57,7 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-      volumeClaimTemlpates:
+      volumeClaimTemplates:
         - type: persistentvolumeclaim
           metadata: 
             namespace: mamad-namespace
