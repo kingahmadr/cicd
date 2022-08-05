@@ -9,8 +9,8 @@ spec:
   podManagementPolicy: OrderedReady
   replicas: 1
   volumeClaimTemplates:
-    - type: persistentvolumeclaim
-      metadata: 
+#    - type: persistentvolumeclaim
+    - metadata: 
         namespace: mamad-namespace
         name: vct-db-wp
       spec:
