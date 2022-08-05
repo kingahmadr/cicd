@@ -68,7 +68,7 @@ spec:
         storageClassName: nfs-client
         volumeName: ''
         resources:
-          request:
+          requests:
             storage: 2Gi                  
 #      volumes:
 #      - hostPath:
