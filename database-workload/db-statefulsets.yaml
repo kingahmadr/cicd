@@ -8,6 +8,18 @@ metadata:
 spec:
   podManagementPolicy: OrderedReady
   replicas: 1
+  volumeClaimTemplates:
+    - type: persistentvolumeclaim
+      metadata: 
+        namespace: mamad-namespace
+        name: vct-db-wp
+      spec:
+        accessModes:
+         - ReadWriteMany
+        storageClassName: nfs-client
+        resources:
+          requests:
+            storage: 2Gi                  
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -57,19 +69,6 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-  volumeClaimTemplates:
-    - type: persistentvolumeclaim
-      metadata: 
-        namespace: mamad-namespace
-        name: vct-db-wp
-      spec:
-        accessModes:
-         - ReadWriteMany
-        storageClassName: nfs-client
-        volumeName: ''
-        resources:
-          requests:
-            storage: 2Gi                  
 #      volumes:
 #      - hostPath:
 #          path: /mnt/mamad-volume-db-wordpress
